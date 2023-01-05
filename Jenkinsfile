@@ -19,7 +19,7 @@ pipeline {
 
     stages {
         stage('Build'){
-            steps {
+            steps {   //  add this to download dependencies from nexus (-s settings.xml)
                 sh 'mvn -s settings.xml -DskipTests install'
             }
             post {
@@ -44,3 +44,4 @@ pipeline {
             }
         }
     }
+}
