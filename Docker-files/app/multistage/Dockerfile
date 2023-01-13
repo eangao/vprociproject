@@ -4,7 +4,7 @@ RUN apt update && apt install maven -y
 #SSH_PRIVATE_KEY from jenkins server
 RUN mkdir /root/.ssh/
 RUN echo "${SSH_PRIVATE_KEY}" > /root/.ssh/id_rsa
-RUN git clone -b cicd-jenkins https://github.com/eangao/vprociproject.git
+RUN git clone -b cicd-jenkins git@github.com:eangao/vprociproject.git
 RUN cd vprociproject && mvn install
 
 FROM tomcat:8-jre11
