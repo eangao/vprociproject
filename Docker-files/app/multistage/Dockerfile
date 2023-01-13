@@ -1,6 +1,6 @@
 FROM openjdk:8 AS BUILD_IMAGE
 RUN apt update && apt install maven -y
-RUN git clone -b cicd-jenkins https://github.com/eangao/vprociproject.git
+RUN cp ./vprociproject vprociproject
 RUN cd vprociproject && mvn install
 
 FROM tomcat:8-jre11
