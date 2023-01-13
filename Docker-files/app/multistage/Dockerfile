@@ -15,9 +15,12 @@ RUN apt update && apt install maven -y
 # RUN touch /root/.ssh/known_hosts
 # RUN ssh-keyscan bitbucket.org >> /root/.ssh/known_hosts
 
+# RUN git clone -b cicd-jenkins https://github.com/eangao/vprociproject.git
+
+
+# https://www.baeldung.com/ops/docker-include-files-outside-build-context
 COPY vprociproject/target/vprofile-v2.war /vprociproject/
 
-# RUN git clone -b cicd-jenkins https://github.com/eangao/vprociproject.git
 RUN cd vprociproject && mvn install
 
 FROM tomcat:8-jre11
