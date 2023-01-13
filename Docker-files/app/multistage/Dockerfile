@@ -2,7 +2,14 @@ FROM openjdk:8 AS BUILD_IMAGE
 
 RUN apt update && apt install maven -y
 
-RUN --mount=type=ssh ...
+# add credentials on build
+ARG SSH_PRIVATE_KEY
+RUN mkdir /root/.ssh/
+RUN echo "${SSH_PRIVATE_KEY}" > /root/.ssh/id_rsa
+
+# make sure your domain is accepted
+RUN touch /root/.ssh/known_hosts
+RUN ssh-keyscan bitbucket.org >> /root/.ssh/known_hosts
 
 RUN git clone -b cicd-jenkins https://github.com/eangao/vprociproject.git
 RUN cd vprociproject && mvn install
