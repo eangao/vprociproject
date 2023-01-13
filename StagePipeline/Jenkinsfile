@@ -20,8 +20,7 @@ pipeline {
         NEXUS_GRP_REPO = 'vpro-maven-group'
         NEXUS_LOGIN = 'nexuslogin'
         SONARSERVER = 'sonarserver'
-        SONARSCANNER = 'sonarscanner'
-        github_credentials = 'githublogin'
+        SONARSCANNER = 'sonarscanner'       
         registryCredential = 'ecr:ap-southeast-1:awscreds'
         appRegistry = '029138719633.dkr.ecr.ap-southeast-1.amazonaws.com/project11-vprofileappimg'
         vprofileRegistry = "https://029138719633.dkr.ecr.ap-southeast-1.amazonaws.com"
@@ -104,8 +103,9 @@ pipeline {
 
         stage('Build App Image') {
             steps {
+                'sh '
                 script {                   
-                    dockerImage = docker.build( appRegistry + ":$BUILD_NUMBER", "--build-arg SSH_PRIVATE_KEY=${github_credentials}", "./Docker-files/app/multistage/")
+                    dockerImage = docker.build( appRegistry + ":$BUILD_NUMBER",  "./Docker-files/app/multistage/")
                                      
                 }
             }
