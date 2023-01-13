@@ -19,9 +19,9 @@ RUN apt update && apt install maven -y
 
 
 # https://www.baeldung.com/ops/docker-include-files-outside-build-context
-COPY target/vprofile-v2.war /vprociproject/
+COPY vprofile-v2.war /vprociproject/
 
-RUN cd vprociproject && mvn install
+# RUN cd vprociproject && mvn install
 
 FROM tomcat:8-jre11
 
