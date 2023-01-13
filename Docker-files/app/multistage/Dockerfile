@@ -7,7 +7,7 @@ RUN mkdir /root/.ssh/
 RUN echo "${SSH_PRIVATE_KEY}" > /root/.ssh/id_rsa
 RUN ls /root/.ssh/
 
-# make sure your domain is accepted
+# make sure your domain is accepted.
 RUN touch /root/.ssh/known_hosts
 RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 
