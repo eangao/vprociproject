@@ -102,7 +102,8 @@ pipeline {
         }
 
         stage('Build App Image') {
-            steps {              
+            steps {        
+                 sh 'cp target/vprofile-v2.war ./Docker-files/app/multistage/'      
                 script {                   
                     dockerImage = docker.build( appRegistry + ":$BUILD_NUMBER",  "./Docker-files/app/multistage/")
                                      
