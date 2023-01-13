@@ -2,6 +2,7 @@ FROM openjdk:8 AS BUILD_IMAGE
 
 RUN apt update && apt install maven -y
 
+# https://vsupalov.com/build-docker-image-clone-private-repo-ssh-key/
 # add credentials on build
 ARG SSH_PRIVATE_KEY
 RUN mkdir /root/.ssh/
