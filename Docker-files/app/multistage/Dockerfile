@@ -19,6 +19,7 @@ RUN apt update && apt install maven -y
 
 
 # https://www.baeldung.com/ops/docker-include-files-outside-build-context
+# it is good to put the fie in the same directory with the Dockerfile
 COPY vprofile-v2.war /vprociproject/
 
 # RUN cd vprociproject && mvn install
