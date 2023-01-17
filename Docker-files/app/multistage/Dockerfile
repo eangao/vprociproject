@@ -1,6 +1,6 @@
-FROM openjdk:8 AS BUILD_IMAGE
+# FROM openjdk:8 AS BUILD_IMAGE
 
-RUN apt update && apt install maven -y
+# RUN apt update && apt install maven -y
 
 # https://vsupalov.com/build-docker-image-clone-private-repo-ssh-key/
 # https://stackoverflow.com/questions/69122042/pass-to-docker-build-several-build-arg-arguments
@@ -20,7 +20,7 @@ RUN apt update && apt install maven -y
 
 # https://www.baeldung.com/ops/docker-include-files-outside-build-context
 # it is good to put the fie in the same directory with the Dockerfile 
-COPY vprofile-v2.war /vprociproject/
+# COPY vprofile-v2.war /vprociproject/
 
 # RUN cd vprociproject && mvn install
 
@@ -28,7 +28,11 @@ FROM tomcat:8-jre11
 
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-COPY --from=BUILD_IMAGE vprociproject/vprofile-v2.war /usr/local/tomcat/webapps/ROOT.war
+COPY vprofile-v2.war /vprociproject/
+
+# COPY --from=BUILD_IMAGE vprociproject/vprofile-v2.war /usr/local/tomcat/webapps/ROOT.war
+
+COPY vprociproject/vprofile-v2.war /usr/local/tomcat/webapps/ROOT.war
 
 EXPOSE 8080
 
