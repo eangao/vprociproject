@@ -32,7 +32,7 @@ COPY vprofile-v2.war /vprociproject/
 
 # COPY --from=BUILD_IMAGE vprociproject/vprofile-v2.war /usr/local/tomcat/webapps/ROOT.war
 
-RUN cp vprociproject/vprofile-v2.war /usr/local/tomcat/webapps/ROOT.war
+RUN mv vprociproject/vprofile-v2.war /usr/local/tomcat/webapps/ROOT.war
 
 EXPOSE 8080
 
