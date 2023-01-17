@@ -22,7 +22,7 @@
 # it is good to put the fie in the same directory with the Dockerfile 
 # COPY vprofile-v2.war /vprociproject/
 
-# RUN cd vprociproject && mvn install
+# RUN cd vprociproject && mvn install 
 
 FROM tomcat:8-jre11
 
