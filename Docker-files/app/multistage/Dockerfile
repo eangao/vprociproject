@@ -22,17 +22,15 @@
 # it is good to put the fie in the same directory with the Dockerfile 
 # COPY vprofile-v2.war /vprociproject/
 
-# RUN cd vprociproject && mvn install
+# RUN cd vprociproject && mvn install 
 
 FROM tomcat:8-jre11
 
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-COPY vprofile-v2.war /vprociproject/
-
 # COPY --from=BUILD_IMAGE vprociproject/vprofile-v2.war /usr/local/tomcat/webapps/ROOT.war
 
-RUN mv vprociproject/vprofile-v2.war /usr/local/tomcat/webapps/ROOT.war
+COPY vprofile-v2.war /usr/local/tomcat/webapps/ROOT.war
 
 EXPOSE 8080
 
